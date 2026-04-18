@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Hairline&family=Space+Grotesk:wght@300..700&family=Syncopate:wght@400;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --bg-color: #060608;
+  --accent-copper: #c76f47;
+  --text-light: #f8f8f8;
+  --text-dim: #b0b0b0;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-light);
+  font-family: var(--font-sans);
+  font-weight: 400 !important;
+  margin: 0;
+  overflow-x: hidden;
+  overscroll-behavior: none;
+}
+
+/* Hide scrollbar for a cleaner premium feel */
+::-webkit-scrollbar {
+  display: none;
+}
+* {
+  scrollbar-width: none;
+}
+
+h1, h2, h3, .heading-font {
+  font-family: 'Syncopate', sans-serif !important;
+  text-transform: uppercase;
+}
+
+/* Custom Font Assignments */
+.deco-text {
+  font-family: 'Bungee Hairline', sans-serif !important;
+  font-weight: 400 !important;
+}
+
+nav, .layer-label h4, .text-xs, .text-sm, .cta-btn, button {
+  font-family: var(--font-sans) !important;
+}
+
+/* Cyberpunk / Engineering Grid Background Overlay */
+.bg-grid {
+  position: fixed;
+  inset: 0;
+  background-image: 
+      linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+  z-index: 1;
+  mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+}
+
+/* Subtle Vignette */
+.vignette {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle, transparent 40%, #060608 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Navigation */
+nav {
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  transition: all 0.3s ease;
+}
+
+/* Scrolling Mouse Animation */
+.mouse {
+  width: 24px;
+  height: 36px;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-radius: 12px;
+  position: relative;
+}
+.mouse-wheel {
+  width: 4px;
+  height: 8px;
+  background-color: var(--accent-copper);
+  border-radius: 2px;
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: scroll-wheel 1.5s infinite;
+}
+@keyframes scroll-wheel {
+  0% { top: 6px; opacity: 1; }
+  100% { top: 18px; opacity: 0; }
+}
+
+/* Section Styling */
+section {
+  position: relative;
+  height: 150vh; /* Extra height to allow for scrubbable scroll space */
+  display: flex;
+  pointer-events: none; /* Let clicks pass through to potential 3D later, text will re-enable */
+}
+.content-block {
+  pointer-events: auto;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.9);
+}
+
+/* Parallax Texts */
+.reveal-text {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.cta-btn {
+  background: transparent;
+  color: var(--text-light);
+  border: 1px solid rgba(255,255,255,0.2);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.cta-btn::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: var(--accent-copper);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+}
+.cta-btn:hover::before {
+  height: 100%;
+}
+.cta-btn:hover {
+  color: #fff;
+  border-color: var(--accent-copper);
+  box-shadow: 0 0 20px rgba(199, 111, 71, 0.4);
+}
+
+/* Floating Labels for Exploded View */
+.layer-label {
+  position: absolute;
+  opacity: 0;
+  transform: translateY(20px);
+  border-left: 2px solid var(--accent-copper);
+  padding-left: 1rem;
+  pointer-events: auto;
+}
