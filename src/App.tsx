@@ -365,11 +365,11 @@ export default function App() {
   }, []);
 
   return (
-    <>
-      <div id="webgl-container" ref={containerRef} className="fixed top-0 left-0 w-screen h-screen z-0 pointer-events-none" />
+    <main className="w-full overflow-x-hidden relative">
+      <div id="webgl-container" ref={containerRef} className="fixed top-0 left-0 w-full h-screen z-0 pointer-events-none" />
       
-      <div className="bg-grid"></div>
-      <div className="vignette"></div>
+      <div className="bg-grid w-full"></div>
+      <div className="vignette w-full"></div>
 
       <nav className="fixed top-0 w-full z-50 px-8 py-6 flex justify-between items-center text-sm tracking-widest uppercase font-semibold text-[var(--text-dim)]">
           <div className="text-white text-xl heading-font tracking-[0.3em]">KRAFT<span className="text-[var(--accent-copper)]">.</span></div>
@@ -380,10 +380,10 @@ export default function App() {
           </div>
       </nav>
 
-      <div id="scroll-content" ref={scrollContentRef} className="relative z-10">
+      <div id="scroll-content" ref={scrollContentRef} className="relative z-10 w-full">
           
-          <section id="sec-hero" className="h-[120vh] items-center justify-center text-center px-4 flex">
-              <div className="content-block flex flex-col items-center mt-[-10vh]">
+          <section id="sec-hero" className="h-[120vh] items-center justify-center text-center px-4 flex w-full">
+              <div className="content-block flex flex-col items-center mt-[-10vh] max-w-full">
                   <h2 className="text-sm md:text-base font-semibold tracking-[0.3em] text-[var(--accent-copper)] mb-6 opacity-0 translate-y-4" id="hero-sub">Engineered for German Performance</h2>
                   <h1 className="text-4xl md:text-7xl font-bold heading-font tracking-tight mb-8 opacity-0 translate-y-8" id="hero-main">
                       Precision Meets<br />Endurance
@@ -427,7 +427,7 @@ export default function App() {
                   <p className="text-[var(--text-dim)] text-sm mt-1 max-w-[220px]">Shock-absorbing titanium-copper alloy rails.</p>
               </div>
 
-              <div className="content-block max-w-lg exploded-text opacity-0 text-right mr-8">
+              <div className="content-block max-w-lg exploded-text opacity-0 text-right mr-0 md:mr-8 w-full">
                   <div className="flex items-center justify-end gap-4 mb-4">
                       <span className="text-sm font-semibold tracking-[0.3em] uppercase">Modular Architecture</span>
                       <div className="w-12 h-[1px] bg-[var(--accent-copper)]"></div>
@@ -572,6 +572,6 @@ export default function App() {
               </div>
           </footer>
       </div>
-    </>
+    </main>
   );
 }
