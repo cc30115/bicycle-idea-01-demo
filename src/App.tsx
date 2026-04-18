@@ -248,11 +248,11 @@ export default function App() {
     tlPressure.to(camera.position, { x: 5, y: 5, z: 8 }, 0)
               .to(matTopSolid, { opacity: 0.95 }, 0)
               .to(matTopWire, { opacity: 0.1 }, 0)
-              .to(".pressure-text", { opacity: 1, x: 20 }, 0.5);
+              .to(".pressure-text", { opacity: 1, y: 0 }, 0.5);
 
     const pressureOutAnim = gsap.to(".pressure-text", {
         opacity: 0,
-        x: -20,
+        y: 20,
         scrollTrigger: {
             trigger: "#sec-pressure",
             start: "bottom center",
@@ -277,13 +277,14 @@ export default function App() {
               .to(topGroup.position, { y: 1.8 }, 0)
               .to(midLayer.position, { y: -0.3 }, 0)
               .to(railsGroup.position, { y: -2.0 }, 0)
-              .to(".exploded-text", { opacity: 1, x: -20 }, 0.5)
+              .to(".exploded-text", { opacity: 1, y: 0 }, 0.5)
               .to(".anim-label-top", { opacity: 1, y: 0 }, 0.6)
               .to(".anim-label-mid", { opacity: 1, y: 0 }, 0.7)
               .to(".anim-label-bot", { opacity: 1, y: 0 }, 0.8);
 
     const explodedOutAnim = gsap.to([".exploded-text", ".layer-label"], {
         opacity: 0,
+        y: 20,
         scrollTrigger: {
             trigger: "#sec-exploded",
             start: "bottom center",
@@ -399,7 +400,7 @@ export default function App() {
           </section>
 
           <section id="sec-pressure" className="h-[150vh] items-center justify-start px-8 md:pl-24 md:pr-12 flex">
-              <div className="content-block max-w-lg pressure-text opacity-0">
+              <div className="content-block max-w-lg pressure-text opacity-0 translate-y-10">
                   <div className="flex items-center gap-4 mb-4">
                       <div className="w-12 h-[1px] bg-[var(--accent-copper)]"></div>
                       <span className="text-sm font-semibold tracking-[0.3em] uppercase">Dynamic Mapping</span>
@@ -428,7 +429,7 @@ export default function App() {
                   <p className="text-[var(--text-dim)] text-sm mt-1">Shock-absorbing titanium-copper alloy rails.</p>
               </div>
 
-              <div className="content-block max-w-lg exploded-text opacity-0 text-left md:text-right w-full relative z-10 md:mr-8">
+              <div className="content-block max-w-lg exploded-text opacity-0 translate-y-10 text-left md:text-right w-full relative z-10 md:mr-8">
                   <div className="flex items-center justify-start md:justify-end gap-4 mb-4">
                       <div className="w-12 h-[1px] bg-[var(--accent-copper)] block md:hidden"></div>
                       <span className="text-sm font-semibold tracking-[0.3em] uppercase">Modular Architecture</span>

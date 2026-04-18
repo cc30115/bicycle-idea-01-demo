@@ -148,7 +148,6 @@ section {
 
 /* Floating Labels for Exploded View */
 .layer-label {
-  position: absolute;
   opacity: 0;
   transform: translateY(20px);
   border-left: 2px solid var(--accent-copper);
