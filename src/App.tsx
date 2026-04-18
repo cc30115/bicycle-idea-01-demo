@@ -190,7 +190,7 @@ export default function App() {
     const geomRail = new THREE.TubeGeometry(railCurveLeft, 40, 0.08, 12, false);
     const geomRailR = new THREE.TubeGeometry(railCurveRight, 40, 0.08, 12, false);
     
-    const matRail = new THREE.MeshStandardMaterial({
+    const matRail = new THREE.MeshPhysicalMaterial({
         color: 0xc76f47,
         roughness: 0.2,
         metalness: 0.9,
@@ -398,7 +398,7 @@ export default function App() {
               </div>
           </section>
 
-          <section id="sec-pressure" className="h-[150vh] items-center justify-start pl-8 md:pl-24 flex">
+          <section id="sec-pressure" className="h-[150vh] items-center justify-start pl-6 md:pl-24 pr-6 md:pr-12 flex">
               <div className="content-block max-w-lg pressure-text opacity-0">
                   <div className="flex items-center gap-4 mb-4">
                       <div className="w-12 h-[1px] bg-[var(--accent-copper)]"></div>
@@ -414,20 +414,20 @@ export default function App() {
 
           <section id="sec-exploded" className="h-[200vh] items-center justify-end pr-8 md:pr-24 relative flex">
               
-              <div id="label-top" className="layer-label top-[30%] left-[5%] md:left-[20%]">
+              <div id="label-top" className="layer-label top-[15%] md:top-[30%] left-[5%] md:left-[20%]">
                   <h4 className="text-white font-bold tracking-widest text-sm mb-1">HIGH-DENSITY FRONT</h4>
-                  <p className="text-[var(--text-dim)] text-sm mt-1 max-w-[220px]">Aerospace-grade mesh for superior airflow and aggressive positioning.</p>
+                  <p className="text-[var(--text-dim)] text-sm mt-1 w-48 md:max-w-[220px]">Aerospace-grade mesh for superior airflow and aggressive positioning.</p>
               </div>
-              <div id="label-mid" className="layer-label top-[50%] left-[2%] md:left-[10%]">
+              <div id="label-mid" className="layer-label top-[35%] md:top-[50%] left-[2%] md:left-[10%]">
                   <h4 className="text-white font-bold tracking-widest text-sm mb-1">MEDIUM SUPPORT CORE</h4>
-                  <p className="text-[var(--text-dim)] text-sm mt-1 max-w-[220px]">Carbon reinforced skeleton structural foundation.</p>
+                  <p className="text-[var(--text-dim)] text-sm mt-1 w-48 md:max-w-[220px]">Carbon reinforced skeleton structural foundation.</p>
               </div>
-              <div id="label-bot" className="layer-label top-[70%] left-[5%] md:left-[20%]">
+              <div id="label-bot" className="layer-label top-[55%] md:top-[70%] left-[5%] md:left-[20%]">
                   <h4 className="text-white font-bold tracking-widest text-sm mb-1">LOW-DENSITY REAR</h4>
-                  <p className="text-[var(--text-dim)] text-sm mt-1 max-w-[220px]">Shock-absorbing titanium-copper alloy rails.</p>
+                  <p className="text-[var(--text-dim)] text-sm mt-1 w-48 md:max-w-[220px]">Shock-absorbing titanium-copper alloy rails.</p>
               </div>
 
-              <div className="content-block max-w-lg exploded-text opacity-0 text-right mr-0 md:mr-8 w-full">
+              <div className="content-block max-w-lg exploded-text opacity-0 text-right mr-0 md:mr-8 w-full absolute bottom-[10%] md:relative md:bottom-auto px-6 md:px-0">
                   <div className="flex items-center justify-end gap-4 mb-4">
                       <span className="text-sm font-semibold tracking-[0.3em] uppercase">Modular Architecture</span>
                       <div className="w-12 h-[1px] bg-[var(--accent-copper)]"></div>
