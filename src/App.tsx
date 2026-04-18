@@ -278,9 +278,9 @@ export default function App() {
               .to(midLayer.position, { y: -0.3 }, 0)
               .to(railsGroup.position, { y: -2.0 }, 0)
               .to(".exploded-text", { opacity: 1, x: -20 }, 0.5)
-              .to("#label-top", { opacity: 1, y: 0 }, 0.6)
-              .to("#label-mid", { opacity: 1, y: 0 }, 0.7)
-              .to("#label-bot", { opacity: 1, y: 0 }, 0.8);
+              .to(".anim-label-top", { opacity: 1, y: 0 }, 0.6)
+              .to(".anim-label-mid", { opacity: 1, y: 0 }, 0.7)
+              .to(".anim-label-bot", { opacity: 1, y: 0 }, 0.8);
 
     const explodedOutAnim = gsap.to([".exploded-text", ".layer-label"], {
         opacity: 0,
@@ -382,7 +382,7 @@ export default function App() {
 
       <div id="scroll-content" ref={scrollContentRef} className="relative z-10 w-full">
           
-          <section id="sec-hero" className="h-[120vh] items-center justify-center text-center px-4 flex w-full">
+          <section id="sec-hero" className="h-[120vh] items-center justify-center text-center px-8 flex w-full">
               <div className="content-block flex flex-col items-center mt-[-10vh] max-w-full">
                   <h2 className="text-sm md:text-base font-semibold tracking-[0.3em] text-[var(--accent-copper)] mb-6 opacity-0 translate-y-4" id="hero-sub">Engineered for German Performance</h2>
                   <h1 className="text-4xl md:text-7xl font-bold heading-font tracking-tight mb-8 opacity-0 translate-y-8" id="hero-main">
@@ -398,7 +398,7 @@ export default function App() {
               </div>
           </section>
 
-          <section id="sec-pressure" className="h-[150vh] items-center justify-start pl-6 md:pl-24 pr-6 md:pr-12 flex">
+          <section id="sec-pressure" className="h-[150vh] items-center justify-start px-8 md:pl-24 md:pr-12 flex">
               <div className="content-block max-w-lg pressure-text opacity-0">
                   <div className="flex items-center gap-4 mb-4">
                       <div className="w-12 h-[1px] bg-[var(--accent-copper)]"></div>
@@ -412,31 +412,48 @@ export default function App() {
               </div>
           </section>
 
-          <section id="sec-exploded" className="h-[200vh] items-center justify-end pr-8 md:pr-24 relative flex">
+          <section id="sec-exploded" className="h-[200vh] flex-col md:flex-row items-start md:items-center justify-start md:justify-end px-8 md:px-0 md:pr-24 pt-[15vh] md:pt-0 relative flex w-full">
               
-              <div id="label-top" className="layer-label top-[45%] md:top-[30%] left-6 md:left-[20%]">
+              {/* DESKTOP LABELS */}
+              <div className="hidden md:block layer-label anim-label-top absolute top-[30%] left-[20%] w-[220px]">
                   <h4 className="text-white font-bold tracking-widest text-sm mb-1">HIGH-DENSITY FRONT</h4>
-                  <p className="text-[var(--text-dim)] text-sm mt-1 w-48 md:max-w-[220px]">Aerospace-grade mesh for superior airflow and aggressive positioning.</p>
+                  <p className="text-[var(--text-dim)] text-sm mt-1">Aerospace-grade mesh for superior airflow and aggressive positioning.</p>
               </div>
-              <div id="label-mid" className="layer-label top-[65%] md:top-[50%] left-6 md:left-[10%]">
+              <div className="hidden md:block layer-label anim-label-mid absolute top-[50%] left-[10%] w-[220px]">
                   <h4 className="text-white font-bold tracking-widest text-sm mb-1">MEDIUM SUPPORT CORE</h4>
-                  <p className="text-[var(--text-dim)] text-sm mt-1 w-48 md:max-w-[220px]">Carbon reinforced skeleton structural foundation.</p>
+                  <p className="text-[var(--text-dim)] text-sm mt-1">Carbon reinforced skeleton structural foundation.</p>
               </div>
-              <div id="label-bot" className="layer-label top-[85%] md:top-[70%] left-6 md:left-[20%]">
+              <div className="hidden md:block layer-label anim-label-bot absolute top-[70%] left-[20%] w-[220px]">
                   <h4 className="text-white font-bold tracking-widest text-sm mb-1">LOW-DENSITY REAR</h4>
-                  <p className="text-[var(--text-dim)] text-sm mt-1 w-48 md:max-w-[220px]">Shock-absorbing titanium-copper alloy rails.</p>
+                  <p className="text-[var(--text-dim)] text-sm mt-1">Shock-absorbing titanium-copper alloy rails.</p>
               </div>
 
-              <div className="content-block max-w-lg exploded-text opacity-0 text-left md:text-right mr-0 md:mr-8 w-full absolute top-[10%] md:relative md:top-auto px-6 md:px-0">
+              <div className="content-block max-w-lg exploded-text opacity-0 text-left md:text-right w-full relative z-10 md:mr-8">
                   <div className="flex items-center justify-start md:justify-end gap-4 mb-4">
                       <div className="w-12 h-[1px] bg-[var(--accent-copper)] block md:hidden"></div>
                       <span className="text-sm font-semibold tracking-[0.3em] uppercase">Modular Architecture</span>
                       <div className="w-12 h-[1px] bg-[var(--accent-copper)] hidden md:block"></div>
                   </div>
                   <h2 className="text-3xl md:text-5xl heading-font mb-6 leading-tight">Adaptable<br />Performance</h2>
-                  <p className="text-[var(--text-dim)] text-lg md:text-xl leading-relaxed ml-0 md:ml-auto">
+                  <p className="text-[var(--text-dim)] text-lg md:text-xl leading-relaxed ml-0 md:ml-auto mb-8 md:mb-0">
                       Three distinct zones constructed from advanced metamaterials. Easily disassemble and customize components to match your specific riding discipline.
                   </p>
+                  
+                  {/* MOBILE LABELS STACK */}
+                  <div className="flex flex-col gap-[20px] md:hidden w-full">
+                      <div className="layer-label relative anim-label-top">
+                          <h4 className="text-white font-bold tracking-widest text-sm mb-1">HIGH-DENSITY FRONT</h4>
+                          <p className="text-[var(--text-dim)] text-sm mt-1">Aerospace-grade mesh for superior airflow and aggressive positioning.</p>
+                      </div>
+                      <div className="layer-label relative anim-label-mid">
+                          <h4 className="text-white font-bold tracking-widest text-sm mb-1">MEDIUM SUPPORT CORE</h4>
+                          <p className="text-[var(--text-dim)] text-sm mt-1">Carbon reinforced skeleton structural foundation.</p>
+                      </div>
+                      <div className="layer-label relative anim-label-bot">
+                          <h4 className="text-white font-bold tracking-widest text-sm mb-1">LOW-DENSITY REAR</h4>
+                          <p className="text-[var(--text-dim)] text-sm mt-1">Shock-absorbing titanium-copper alloy rails.</p>
+                      </div>
+                  </div>
               </div>
           </section>
 
@@ -476,7 +493,7 @@ export default function App() {
               </div>
           </section>
 
-          <section id="sec-cta" className="h-[100vh] items-center justify-center text-center px-4 relative z-20 flex">
+          <section id="sec-cta" className="h-[100vh] items-center justify-center text-center px-8 relative z-20 flex">
               <div className="content-block cta-content opacity-0 scale-95 flex flex-col items-center">
                   <h2 className="text-4xl md:text-6xl heading-font mb-4">Ready to Ride?</h2>
                   <p className="text-[var(--text-dim)] text-lg md:text-xl mb-10 tracking-wide max-w-md">Experience the pinnacle of German engineering and surge into the future of cycling.</p>
